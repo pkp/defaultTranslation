@@ -13,6 +13,6 @@
   -->
  
 <locale name="de_DE" full_name="Deutsch (Deutschland)">
-	<message key="plugins.generic.defaultTranslation.displayName">Default Translation Plugin</message>
+	<message key="plugins.generic.defaultTranslation.displayName">Default-Translation-Plug-In</message>
 	<message key="plugins.generic.defaultTranslation.description">Dieses Plug-In ermöglicht es, den englischen Text anzuzeigen, wenn in der momentan ausgewählten Sprache der Benutzeroberfläche eine Übersetzung fehlt.</message>
 </locale>
