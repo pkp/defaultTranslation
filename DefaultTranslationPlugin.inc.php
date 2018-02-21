@@ -3,8 +3,8 @@
 /**
  * @file DefaultTranslationPlugin.inc.php
  *
- * Copyright (c) 2013-2015 Simon Fraser University Library
- * Copyright (c) 2003-2015 John Willinsky
+ * Copyright (c) 2013-2018 Simon Fraser University
+ * Copyright (c) 2003-2018 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @package plugins.generic.defaultTranslation
@@ -52,16 +52,16 @@ class DefaultTranslationPlugin extends GenericPlugin {
 
 	/**
 	 * Hook callback: Handle requests.
-	 * Show Englisch translation if the current UI language translation doesn't exist.
+	 * Show English translation if the current UI language translation doesn't exist.
 	 * @param $hookName string The name of the hook being invoked
 	 * @param $args array The parameters to the invoked hook
 	 */
 	function translate($hookName, $args) {
-		$key = $args[1];
-		$params = $args[2];
-		$locale = $args[3];
-		$localeFiles = $args[4];
-		$value = &$args[5];
+		$key = $args[0];
+		$params = $args[1];
+		$locale = $args[2];
+		$localeFiles = $args[3];
+		$value =& $args[4];
 
 		foreach ($localeFiles as $localeFile) {
 			$fileName = $localeFile->getFilename();
@@ -86,4 +86,3 @@ class DefaultTranslationPlugin extends GenericPlugin {
 	}
 
 }
-?>
