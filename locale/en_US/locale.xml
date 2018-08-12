@@ -11,7 +11,7 @@
   * Localization strings for the en_US (U.S. English) locale.
   *
   -->
- 
+
 <locale name="en_US" full_name="U.S. English">
 	<message key="plugins.generic.defaultTranslation.displayName">Default Translation Plugin</message>
 	<message key="plugins.generic.defaultTranslation.description">This plugin enables the display of English text when the current UI language is lacking a translation of that text.</message>
