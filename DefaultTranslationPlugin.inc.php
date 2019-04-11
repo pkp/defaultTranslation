@@ -34,8 +34,8 @@ class DefaultTranslationPlugin extends GenericPlugin {
 	/**
 	 * @copydoc LazyLoadPlugin::register()
 	 */
-	function register($category, $path) {
-		$success = parent::register($category, $path);
+	function register($category, $path, $mainContextId = null) {
+		$success = parent::register($category, $path, $mainContextId);
 		if ($success && $this->getEnabled()) {
 			HookRegistry::register('PKPLocale::translate', array($this, 'translate'));
 			HookRegistry::register('PKPLocale::registerLocaleFile::isValidLocaleFile', array(&$this, 'isValidLocaleFile'));
