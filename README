@@ -1,6 +1,6 @@
 ================================
 === OJS Default Translation Plugin
-=== Version: 1.1.1
+=== Version: 1.2.0.0
 === Author: Božana Bokan <bozana.bokan@fu-berlin.de>
 === Author: Marco Tullney <marco.tullney@posteo.de>
 ================================
@@ -15,7 +15,7 @@ This plugin is licensed under the GNU General Public License v3. See the file LI
 
 System Requirements
 -------------------
-This plugin is compatible with OJS/OMP/OPS 3.2.
+This plugin is compatible with OJS/OMP/OPS 3.4.
 
 Installation
 ------------
@@ -33,6 +33,7 @@ at <http://github.com/pkp/defaultTranslation>.
 
 Version History
 ---------------
-1.0	- Initial Release
-1.1	- Adapted for OJS 3.x
-1.1.1	- Adapted for OJS/OMP/OPS 3.2
+1.0.0.0	- Initial Release
+1.1.0.0	- Adapted for OJS 3.x
+1.1.1.0	- Adapted for OJS/OMP/OPS 3.2
+1.2.0.0	- Adapted for OJS/OMP/OPS 3.4
