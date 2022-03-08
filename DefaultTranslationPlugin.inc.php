@@ -13,10 +13,12 @@
  * Display English translation if the current UI language translation doesn't exist
  */
 
-import('lib.pkp.classes.plugins.GenericPlugin');
+use PKP\facades\Locale;
+use PKP\i18n\interfaces\LocaleInterface;
+use PKP\plugins\GenericPlugin;
+use PKP\plugins\HookRegistry;
 
 class DefaultTranslationPlugin extends GenericPlugin {
-
 	/**
 	 * @copydoc PKPPlugin::getDisplayName()
 	 */
@@ -37,8 +39,7 @@ class DefaultTranslationPlugin extends GenericPlugin {
 	function register($category, $path, $mainContextId = null) {
 		$success = parent::register($category, $path, $mainContextId);
 		if ($success && $this->getEnabled()) {
-			HookRegistry::register('PKPLocale::translate', array($this, 'translate'));
-			HookRegistry::register('PKPLocale::registerLocaleFile::isValidLocaleFile', array(&$this, 'isValidLocaleFile'));
+			HookRegistry::register('Locale::translate', fn () => $this->translate(...func_get_args()));
 		}
 		return $success;
 	}
@@ -57,32 +58,15 @@ class DefaultTranslationPlugin extends GenericPlugin {
 	 * @param $args array The parameters to the invoked hook
 	 */
 	function translate($hookName, $args) {
-		$key = $args[0];
-		$params = $args[1];
-		$locale = $args[2];
-		$localeFiles = $args[3];
-		$value =& $args[4];
+		[&$value, $key, $params, $number, $locale, $localeBundle] = $args;
 
-		foreach ($localeFiles as $localeFile) {
-			$fileName = $localeFile->getFilename();
-			$newFileName = str_replace($locale, 'en_US', $fileName);
-			$newFile = new LocaleFile('en_US', $newFileName);
-			$value = $newFile->translate($key, $params);
-			if ($value !== null) {
-				return true;
-			}
+		if ($locale === LocaleInterface::DEFAULT_LOCALE) {
+			return false;
 		}
-		return false;
-	}
 
-	/**
-	 * Hook callback: Handle requests.
-	 * Consider/register also the not existing locale files.
-	 * @param $hookName string The name of the hook being invoked
-	 * @param $args array The parameters to the invoked hook
-	 */
-	function isValidLocaleFile($hookName, $args) {
+		$value = $number === null
+			? Locale::get($key, $params, LocaleInterface::DEFAULT_LOCALE)
+			: Locale::choice($key, $number, $params, LocaleInterface::DEFAULT_LOCALE);
 		return true;
 	}
-
 }
