@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file DefaultTranslationPlugin.inc.php
+ * @file DefaultTranslationPlugin.php
  *
  * Copyright (c) 2013-2022 Simon Fraser University
  * Copyright (c) 2003-2022 John Willinsky
@@ -12,6 +12,8 @@
  *
  * Fallbacks to an English translation if the requested locale key isn't translated for the current locale
  */
+
+namespace APP\plugins\generic\defaultTranslation;
 
 use PKP\facades\Locale;
 use PKP\i18n\interfaces\LocaleInterface;
@@ -74,4 +76,8 @@ class DefaultTranslationPlugin extends GenericPlugin
             : Locale::choice($key, $number, $params, LocaleInterface::DEFAULT_LOCALE);
         return true;
     }
+}
+
+if (!PKP_STRICT_MODE) {
+    class_alias('\APP\plugins\generic\defaultTranslation\DefaultTranslationPlugin', '\DefaultTranslationPlugin');
 }

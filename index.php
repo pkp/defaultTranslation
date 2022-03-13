@@ -13,5 +13,6 @@
  *
  */
 
-require_once 'DefaultTranslationPlugin.inc.php';
+use APP\plugins\generic\defaultTranslation\DefaultTranslationPlugin;
+
 return new DefaultTranslationPlugin();
