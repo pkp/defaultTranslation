@@ -15,13 +15,18 @@
 
 namespace APP\plugins\generic\defaultTranslation;
 
+use Generator;
 use PKP\facades\Locale;
 use PKP\i18n\interfaces\LocaleInterface;
+use PKP\i18n\LocaleMetadata;
 use PKP\plugins\GenericPlugin;
 use PKP\plugins\HookRegistry;
 
 class DefaultTranslationPlugin extends GenericPlugin
 {
+    /** Safeguard flag */
+    private static ?string $_processingId = null;
+
     /**
      * @copydoc PKPPlugin::getDisplayName()
      */
@@ -67,14 +72,64 @@ class DefaultTranslationPlugin extends GenericPlugin
     {
         [&$value, $key, $params, $number, $locale, $localeBundle] = $args;
 
+        // If the safeguard is set, then this is an inner hook, raised from our Locale::get/choice call below.
+        // So we set the $value with the safeguard flag (null would break Laravel's signature) as a way to signal a failure to the outer hook handler.
+        if (static::$_processingId) {
+            $value = static::$_processingId;
+            return true;
+        }
+
+        // The LocaleInterface::DEFAULT_LOCALE is supposed to be the most complete one, there's nothing more we can do
         if ($locale === LocaleInterface::DEFAULT_LOCALE) {
             return false;
         }
 
-        $value = $number === null
-            ? Locale::get($key, $params, LocaleInterface::DEFAULT_LOCALE)
-            : Locale::choice($key, $number, $params, LocaleInterface::DEFAULT_LOCALE);
+        // Setup a unique prefixed safeguard
+        static::$_processingId = uniqid($key);
+        try {
+            foreach ($this->getSuitableLocales($locale) as $fallbackLocale) {
+                $value = $number === null
+                    ? Locale::get($key, $params, $fallbackLocale)
+                    : Locale::choice($key, $number, $params, $fallbackLocale);
+                // Failed translations, while inside the hook, will return the safeguard value
+                if ($value !== static::$_processingId) {
+                    break;
+                }
+            }
+        } finally {
+            static::$_processingId = null;
+        }
         return true;
+    }
+
+    /**
+     * Generates a list of suitable languages
+     */
+    public function getSuitableLocales(string $locale): Generator
+    {
+        static $cache;
+        if (!($locales = $cache[$locale] ?? null)) {
+            $metadata = Locale::getMetadata($locale);
+            $locales = array_filter(
+                Locale::getLocales(),
+                fn (LocaleMetadata $locale) =>
+                    $locale->getLanguage() === $metadata->getLanguage()
+                    && $locale->locale !== $metadata->locale
+                    && $locale->locale !== LocaleInterface::DEFAULT_LOCALE
+            );
+            // Give preference to locales that have the same script as the original locale, otherwise just sort by country and script
+            uasort(
+                $locales,
+                fn (LocaleMetadata $a, LocaleMetadata $b) =>
+                    ($b->getScript() === $metadata->getScript()) - ($a->getScript() === $metadata->getScript())
+                    ?: strcmp($a->getCountry(), $b->getCountry())
+                    ?: strcmp($a->getScript(), $b->getScript())
+            );
+            $locales = array_map(fn (LocaleMetadata $metadata) => $metadata->locale, $locales);
+        }
+
+        yield from $locales;
+        yield LocaleInterface::DEFAULT_LOCALE;
     }
 }
 
