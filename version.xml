@@ -4,8 +4,8 @@
 <!--
   * version.xml
   *
-  * Copyright (c) 2013-2020 Simon Fraser University
-  * Copyright (c) 2003-2020 John Willinsky
+  * Copyright (c) 2013-2022 Simon Fraser University
+  * Copyright (c) 2003-2022 John Willinsky
   * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
   *
   * Plugin version information.
@@ -13,8 +13,8 @@
 <version>
 	<application>defaultTranslation</application>
 	<type>plugins.generic</type>
-	<release>1.1.1.1</release>
-	<date>2020-06-19</date>
+	<release>1.2.0.0</release>
+	<date>2022-03-09</date>
 	<lazy-load>1</lazy-load>
 	<class>DefaultTranslationPlugin</class>
 </version>
