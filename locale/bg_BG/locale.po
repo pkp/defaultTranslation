@@ -1,0 +1,21 @@
+# Cyril Kamburov <cc@intermedia.bg>, 2022.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-03-27 15:56+0000\n"
+"Last-Translator: Cyril Kamburov <cc@intermedia.bg>\n"
+"Language-Team: Bulgarian <http://translate.pkp.sfu.ca/projects/plugins/"
+"default-translation-plugin/bg_BG/>\n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.generic.defaultTranslation.description"
+msgstr ""
+"Тази добавка позволява показването на английски текст, когато на текущия "
+"език на потребителския интерфейс липсва превод на този текст."
+
+msgid "plugins.generic.defaultTranslation.displayName"
+msgstr "Добавка за превод по подразбиране"
