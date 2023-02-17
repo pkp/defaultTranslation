@@ -66,7 +66,7 @@ class DefaultTranslationPlugin extends GenericPlugin
     }
 
     /**
-     * Attempts to find a translation for the requested locale key using the default locale (en_US)
+     * Attempts to find a translation for the requested locale key using the default locale (en)
      */
     public function translate(string $hookName, array $args): bool
     {
