@@ -1,7 +1,6 @@
 ```
 ================================
 === OJS Default Translation Plugin
-=== Version: 1.2.0.0
 === Author: Božana Bokan <bozana.bokan@fu-berlin.de>
 === Author: Marco Tullney <marco.tullney@posteo.de>
 ================================`

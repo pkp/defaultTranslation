@@ -3,11 +3,10 @@
 /**
  * @file DefaultTranslationPlugin.php
  *
- * Copyright (c) 2013-2022 Simon Fraser University
- * Copyright (c) 2003-2022 John Willinsky
+ * Copyright (c) 2013-2023 Simon Fraser University
+ * Copyright (c) 2003-2023 John Willinsky
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
- * @package plugins.generic.defaultTranslation
  * @class DefaultTranslationPlugin
  *
  * Fallbacks to an English translation if the requested locale key isn't translated for the current locale
@@ -20,7 +19,7 @@ use PKP\facades\Locale;
 use PKP\i18n\interfaces\LocaleInterface;
 use PKP\i18n\LocaleMetadata;
 use PKP\plugins\GenericPlugin;
-use PKP\plugins\HookRegistry;
+use PKP\plugins\Hook;
 
 class DefaultTranslationPlugin extends GenericPlugin
 {
@@ -52,7 +51,7 @@ class DefaultTranslationPlugin extends GenericPlugin
     {
         $success = parent::register($category, $path, $mainContextId);
         if ($success && $this->getEnabled()) {
-            HookRegistry::register('Locale::translate', fn () => $this->translate(...func_get_args()));
+            Hook::add('Locale::translate', fn () => $this->translate(...func_get_args()));
         }
         return $success;
     }
