@@ -1,8 +1,22 @@
 # Ebrahim Rasti Borazjani Faghat <e.rasti.b@gmail.com>, 2023.
+# Kamdin Parsakia <kamdinparsakia@iranmehr.ac.ir>, 2023.
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-09-09 23:58+0000\n"
+"Last-Translator: Kamdin Parsakia <kamdinparsakia@iranmehr.ac.ir>\n"
+"Language-Team: Persian <http://translate.pkp.sfu.ca/projects/plugins/"
+"default-translation-plugin/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Weblate\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.13.1\n"
+
+msgid "plugins.generic.defaultTranslation.displayName"
+msgstr "افزونه ترجمه پیش‌فرض"
+
+msgid "plugins.generic.defaultTranslation.description"
+msgstr ""
+"فعال کردن این افزونه باعث می‌شود قسمت‌های ترجمه نشده سایت به زبان انگلیسی "
+"نمایش داده شود."
