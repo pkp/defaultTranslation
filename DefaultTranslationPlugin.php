@@ -124,7 +124,7 @@ class DefaultTranslationPlugin extends GenericPlugin
                     ?: strcmp($a->getCountry(), $b->getCountry())
                     ?: strcmp($a->getScript(), $b->getScript())
             );
-            $locales = array_map(fn (LocaleMetadata $metadata) => $metadata->locale, $locales);
+            $cache[$locale] = $locales = array_map(fn (LocaleMetadata $metadata) => $metadata->locale, $locales);
         }
 
         yield from $locales;
