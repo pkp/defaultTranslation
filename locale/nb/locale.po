@@ -1,8 +1,10 @@
 # Johanna Skaug <johanna.skaug@ub.uio.no>, 2024.
+# "FRITT, University of Oslo Library" <fritt-info@journals.uio.no>, 2024.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-06-26 11:39+0000\n"
-"Last-Translator: Johanna Skaug <johanna.skaug@ub.uio.no>\n"
+"PO-Revision-Date: 2024-06-26 11:40+0000\n"
+"Last-Translator: \"FRITT, University of Oslo Library\" <fritt-info@journals."
+"uio.no>\n"
 "Language-Team: Norwegian Bokmål <http://translate.pkp.sfu.ca/projects/"
 "plugins/default-translation-plugin/nb_NO/>\n"
 "Language: nb\n"
@@ -18,3 +20,6 @@ msgstr ""
 "Dette programtillegget gjør det mulig å vise den engelske tekststrengen når "
 "det aktuelle språket i brukergrensesnittet mangler en oversettelse for en "
 "tekststreng."
+
+msgid "plugins.generic.defaultTranslation.displayName"
+msgstr "Programtillegg for standard oversettelse"
