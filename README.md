@@ -14,7 +14,7 @@ This plugin displays an English translation if the current UI language translati
 This plugin is licensed under the GNU General Public License v3. See the file LICENSE for the complete terms of this license.
 
 ## System Requirements
-This plugin is compatible with OJS/OMP/OPS 3.4.
+This plugin is compatible with OJS/OMP/OPS 3.5.
 
 ## Installation
 
@@ -36,3 +36,4 @@ at http://github.com/pkp/defaultTranslation.
 * 1.1.0.0	- Adapted for OJS 3.x
 * 1.1.1.0	- Adapted for OJS/OMP/OPS 3.2
 * 1.2.0.0	- Adapted for OJS/OMP/OPS 3.4
+* 1.3.0.0	- Adapted for OJS/OMP/OPS 3.5
