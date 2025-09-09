@@ -112,7 +112,7 @@ class DefaultTranslationPlugin extends GenericPlugin
             $locales = array_filter(
                 Locale::getLocales(),
                 fn (LocaleMetadata $locale) =>
-                    $locale->getLanguage() === $metadata->getLanguage()
+                    $locale->getDisplayName() === $metadata->getDisplayName()
                     && $locale->locale !== $metadata->locale
                     && $locale->locale !== LocaleInterface::DEFAULT_LOCALE
             );
