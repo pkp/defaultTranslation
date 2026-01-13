@@ -131,7 +131,3 @@ class DefaultTranslationPlugin extends GenericPlugin
         yield LocaleInterface::DEFAULT_LOCALE;
     }
 }
-
-if (!PKP_STRICT_MODE) {
-    class_alias('\APP\plugins\generic\defaultTranslation\DefaultTranslationPlugin', '\DefaultTranslationPlugin');
-}
